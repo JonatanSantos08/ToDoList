@@ -1,12 +1,12 @@
-import './TodoItem.css';
 import React from 'react';
+import './TodoItem.css';
 
-function TodoItem({ task }) {
+const TodoItem = ({ task }) => {
   return (
-    <div className="todo-item">
-      <p>{task}</p>
-    </div>
+    <li className="todo-item">
+      {task.title}
+    </li>
   );
-}
+};
 
 export default TodoItem;

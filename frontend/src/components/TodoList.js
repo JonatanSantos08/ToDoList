@@ -1,16 +1,36 @@
-import './TodoList.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import TodoItem from './TodoItem';
+import './TodoList.css';
 
-function TodoList({ tasks }) {
+const TodoList = ({ tasks }) => {
+  const [fetchedTasks, setFetchedTasks] = useState([]);
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/api/tasks');
+        setFetchedTasks(response.data);
+      } catch (error) {
+        console.error("There was an error fetching the tasks!", error);
+      }
+    };
+
+    fetchTasks();
+  }, []);
+
   return (
     <div className="todo-list">
-      <h2>My To-Do List</h2>
-      {tasks.map((task, index) => (
-        <TodoItem key={index} task={task} />
-      ))}
+      <ul>
+        {fetchedTasks.map((task) => (
+          <TodoItem key={task._id} task={task} />
+        ))}
+        {tasks.map((task) => (
+          <TodoItem key={task._id} task={task} />
+        ))}
+      </ul>
     </div>
   );
-}
+};
 
 export default TodoList;

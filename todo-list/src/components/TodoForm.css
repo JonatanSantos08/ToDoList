@@ -1,0 +1,17 @@
+.todo-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .todo-form input {
+    padding: 5px;
+    font-size: 1rem;
+  }
+  
+  .todo-form button {
+    padding: 5px 10px;
+    font-size: 1rem;
+    margin-left: 5px;
+  }
+  

@@ -1,3 +1,4 @@
+import './TodoForm.css';
 import React, { useState } from 'react';
 
 function TodoForm({ addTask }) {
@@ -10,7 +11,7 @@ function TodoForm({ addTask }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="todo-form">
       <input 
         type="text" 
         placeholder="Add a task" 

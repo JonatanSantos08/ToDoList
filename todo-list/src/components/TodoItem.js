@@ -1,9 +1,9 @@
 import React from 'react';
 
-function TodoItem() {
+function TodoItem({ task }) {
   return (
     <div>
-      <p>Task</p>
+      <p>{task}</p>
     </div>
   );
 }

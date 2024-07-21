@@ -11,6 +11,11 @@ db.once('open', () => {
   console.log('Connected to MongoDB');
 });
 
+app.use(express.json());
+
+const taskRoutes = require('./routes/tasks');
+app.use('/api', taskRoutes);
+
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });

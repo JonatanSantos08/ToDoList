@@ -1,11 +1,13 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 
-function TodoList() {
+function TodoList({ tasks }) {
   return (
     <div>
       <h2>My To-Do List</h2>
-      <TodoItem />
+      {tasks.map((task, index) => (
+        <TodoItem key={index} task={task} />
+      ))}
     </div>
   );
 }

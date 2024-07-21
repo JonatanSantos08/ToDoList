@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function TodoForm() {
+function TodoForm({ addTask }) {
+  const [input, setInput] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addTask(input);
+    setInput('');
+  };
+
   return (
-    <form>
-      <input type="text" placeholder="Add a task" />
+    <form onSubmit={handleSubmit}>
+      <input 
+        type="text" 
+        placeholder="Add a task" 
+        value={input} 
+        onChange={(e) => setInput(e.target.value)} 
+      />
       <button type="submit">Add</button>
     </form>
   );

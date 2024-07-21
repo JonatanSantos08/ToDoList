@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const app = express();
 const port = 3001;
 
@@ -11,6 +12,7 @@ db.once('open', () => {
   console.log('Connected to MongoDB');
 });
 
+app.use(cors());
 app.use(express.json());
 
 const taskRoutes = require('./routes/tasks');

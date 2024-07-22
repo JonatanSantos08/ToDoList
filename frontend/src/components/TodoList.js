@@ -19,14 +19,26 @@ const TodoList = ({ tasks }) => {
     fetchTasks();
   }, []);
 
+  const updateTask = (updatedTask) => {
+    setFetchedTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task._id === updatedTask._id ? updatedTask : task
+      )
+    );
+  };
+
+  const deleteTask = (taskId) => {
+    setFetchedTasks((prevTasks) => prevTasks.filter((task) => task._id !== taskId));
+  };
+
   return (
     <div className="todo-list">
       <ul>
         {fetchedTasks.map((task) => (
-          <TodoItem key={task._id} task={task} />
+          <TodoItem key={task._id} task={task} updateTask={updateTask} deleteTask={deleteTask} />
         ))}
         {tasks.map((task) => (
-          <TodoItem key={task._id} task={task} />
+          <TodoItem key={task._id} task={task} updateTask={updateTask} deleteTask={deleteTask} />
         ))}
       </ul>
     </div>

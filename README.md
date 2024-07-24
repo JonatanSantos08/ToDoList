@@ -22,9 +22,10 @@ Para rodar o projeto localmente, siga os passos abaixo:
     ```bash
     git clone https://github.com/JonatanSantos08/ToDoList.git
     ```
-2. Navegue até o diretório do projeto:
+2. Navegue até o diretório do projeto e abra dois terminais:
     ```bash
-    cd nome-do-repositorio
+    cd frontend
+    cd backend
     ```
 3. Instale as dependências necessárias:
     ```bash
@@ -33,6 +34,7 @@ Para rodar o projeto localmente, siga os passos abaixo:
 4. Inicie o servidor de desenvolvimento:
     ```bash
     npm start
+    node server.js
     ```
 
 ---

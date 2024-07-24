@@ -1,44 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import TodoItem from './TodoItem';
 import './TodoList.css';
+import { useTasks } from '../context/TaskContext';
 
-const TodoList = ({ tasks }) => {
-  const [fetchedTasks, setFetchedTasks] = useState([]);
+const TodoList = () => {
+  const { tasks, fetchTasks } = useTasks();
 
   useEffect(() => {
-    const fetchTasks = async () => {
-      try {
-        const response = await axios.get('http://localhost:3001/api/tasks');
-        setFetchedTasks(response.data);
-      } catch (error) {
-        console.error("There was an error fetching the tasks!", error);
-      }
-    };
-
     fetchTasks();
-  }, []);
-
-  const updateTask = (updatedTask) => {
-    setFetchedTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task._id === updatedTask._id ? updatedTask : task
-      )
-    );
-  };
-
-  const deleteTask = (taskId) => {
-    setFetchedTasks((prevTasks) => prevTasks.filter((task) => task._id !== taskId));
-  };
+  }, [fetchTasks]);
 
   return (
     <div className="todo-list">
       <ul>
-        {fetchedTasks.map((task) => (
-          <TodoItem key={task._id} task={task} updateTask={updateTask} deleteTask={deleteTask} />
-        ))}
         {tasks.map((task) => (
-          <TodoItem key={task._id} task={task} updateTask={updateTask} deleteTask={deleteTask} />
+          <TodoItem key={task._id} task={task} />
         ))}
       </ul>
     </div>

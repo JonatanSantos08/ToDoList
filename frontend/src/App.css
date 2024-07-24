@@ -16,3 +16,8 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   padding: 20px;
 }
+
+.error-message {
+  color: red;
+  margin: 10px 0;
+}

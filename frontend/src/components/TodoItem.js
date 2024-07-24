@@ -36,11 +36,12 @@ const TodoItem = ({ task, updateTask, deleteTask }) => {
       ) : (
         <span>{task.title}</span>
       )}
-      <button onClick={() => setIsEditing(!isEditing)}>
-        {isEditing ? "Save" : "Edit"}
-      </button>
+      {isEditing ? (
+        <button onClick={handleUpdate}>Save</button>
+      ) : (
+        <button onClick={() => setIsEditing(!isEditing)}>Edit</button>
+      )}
       <button onClick={handleDelete}>Delete</button>
-      {isEditing && <button onClick={handleUpdate}>Save</button>}
     </li>
   );
 };
